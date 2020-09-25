@@ -93,9 +93,11 @@ public class AlfrescoRestTemplate {
 
 			// SetBasicAuthentication
 			headers.setBasicAuth("admin", "admin");
+			
+			String requestJson = "{\"admin\":{ \"cm:title\" : \"New Title Using RESTAPI\", \"some:custom_meta\" : \"123456\"}}";
 
 			// POST Request
-			HttpEntity<String> entity = new HttpEntity<String>(headers);
+			HttpEntity<String> entity = new HttpEntity<String>(requestJson, headers);
 			// POST Method (response)
 			HttpEntity<String[]> response = restTemplate.exchange(uri, HttpMethod.PUT, entity, String[].class);
 
